@@ -41,6 +41,6 @@ public class BoardController {
             return ResponseEntity.notFound().build();
         }
 
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok().body(board);
     }
 }
