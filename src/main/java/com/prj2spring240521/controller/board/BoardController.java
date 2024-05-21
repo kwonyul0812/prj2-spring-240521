@@ -4,10 +4,9 @@ import com.prj2spring240521.domain.board.Board;
 import com.prj2spring240521.service.board.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/board")
@@ -18,11 +17,17 @@ public class BoardController {
 
     @PostMapping("add")
     public ResponseEntity add(@RequestBody Board board) {
+
         if (service.validate(board)) {
             service.add(board);
             return ResponseEntity.ok().build();
         } else {
             return ResponseEntity.badRequest().build();
         }
+    }
+
+    @GetMapping("list")
+    public List<Board> list() {
+        return service.list();
     }
 }
