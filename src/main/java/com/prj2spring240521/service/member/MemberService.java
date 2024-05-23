@@ -119,7 +119,7 @@ public class MemberService {
                 result = new HashMap<>();
                 String token = "";
                 Instant now = Instant.now();
-                //
+                // https://github.com/spring-projects/spring-security-samples/blob/main/servlet/spring-boot/java/jwt/login/src/main/java/example/web/TokenController.java
                 JwtClaimsSet claims = JwtClaimsSet.builder()
                         .issuer("self")
                         .issuedAt(now)
