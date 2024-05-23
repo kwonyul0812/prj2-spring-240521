@@ -87,4 +87,17 @@ public class MemberService {
         }
         mapper.update(member);
     }
+
+    public boolean hasAccessModify(Member member) {
+        Member dbmember = mapper.selectById(member.getId());
+        if (dbmember == null) {
+            return false;
+        }
+
+        if (passwordEncoder.matches(member.getOldPassword(), dbmember.getPassword())) {
+            return false;
+        }
+
+        return true;
+    }
 }
