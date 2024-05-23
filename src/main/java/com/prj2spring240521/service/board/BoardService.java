@@ -19,7 +19,7 @@ public class BoardService {
     private final MemberMapper memberMapper;
 
     public void add(Board board, Authentication authentication) {
-        Member member = MemberMapper.selectByEmail(authentication.getName());
+        Member member = memberMapper.selectByEmail(authentication.getName());
         board.setMemberId(member.getId());
         mapper.insert(board);
     }
