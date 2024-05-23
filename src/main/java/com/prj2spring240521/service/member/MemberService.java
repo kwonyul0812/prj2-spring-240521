@@ -94,7 +94,7 @@ public class MemberService {
             return false;
         }
 
-        if (passwordEncoder.matches(member.getOldPassword(), dbmember.getPassword())) {
+        if (!passwordEncoder.matches(member.getOldPassword(), dbmember.getPassword())) {
             return false;
         }
 
