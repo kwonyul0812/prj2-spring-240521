@@ -45,3 +45,13 @@ DESC board;
 SELECT *
 FROM board
 ORDER BY id DESC;
+
+DELETE
+FROM board
+WHERE member_id = 10;
+SELECT *
+FROM member
+WHERE email = 'sss@sss';
+DELETE
+FROM member
+WHERE email = 'sss@sss';
