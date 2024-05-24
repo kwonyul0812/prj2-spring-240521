@@ -75,7 +75,7 @@ public class MemberService {
     }
 
     public boolean hasAccess(Member member, Authentication authentication) {
-        if (member.getId().toString().equals(authentication.getName())) {
+        if (!member.getId().toString().equals(authentication.getName())) {
             return false;
         }
 
