@@ -55,3 +55,14 @@ WHERE email = 'sss@sss';
 DELETE
 FROM member
 WHERE email = 'sss@sss';
+
+# 권한 테이블
+CREATE TABLE authority
+(
+    member_id INT         NOT NULL REFERENCES member (id),
+    name      VARCHAR(20) NOT NULL,
+    PRIMARY KEY (member_id, name)
+);
+
+INSERT INTO authority (member_id, name)
+VALUES (18, 'admin');
