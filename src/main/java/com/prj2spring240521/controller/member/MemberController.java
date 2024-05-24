@@ -52,6 +52,7 @@ public class MemberController {
     }
 
     @GetMapping("list")
+    @PreAuthorize("hasAuthority('SCOPE_admin')")
     public List<Member> list() {
         return service.list();
     }
