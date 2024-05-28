@@ -57,6 +57,12 @@ public interface BoardMapper {
             """)
     int deleteByMemberId(Integer memberId);
 
+    @Delete("""
+            DELETE FROM board_file
+            WHERE board_id = #{id}
+            """)
+    int deleteBoardFileById(Integer id);
+
 
     @Select("""
             <script>
@@ -125,4 +131,6 @@ public interface BoardMapper {
             WHERE board_id = #{boardId}
             """)
     List<String> selectFileNameByBoardId(Integer boardId);
+
+
 }

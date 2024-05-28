@@ -105,6 +105,7 @@ public class BoardService {
     }
 
     public void remove(Integer id) {
+        mapper.deleteBoardFileById(id);
         mapper.deleteById(id);
     }
 
