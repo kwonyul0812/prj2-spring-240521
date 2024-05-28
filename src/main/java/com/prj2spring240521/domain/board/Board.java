@@ -16,4 +16,6 @@ public class Board {
 
     private Integer numberOfImages;
     private List<BoardFile> fileList;
+
+
 }
