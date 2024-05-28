@@ -95,11 +95,12 @@ public class BoardService {
     public Board get(Integer id) {
         Board board = mapper.selectById(id);
         List<String> fileNames = mapper.selectFileNameByBoardId(id);
+        // http://172.30.1.61:8888/\{id}/\{name}
         List<BoardFile> files = fileNames.stream()
                 .map(name -> new BoardFile(name, STR."http://172.30.1.61:8888/\{id}/\{name}"))
                 .toList();
 
-        board.setFiles(files);
+        board.setFileList(files);
 
         // http://172.30.1.61:8888/\{id}/\{name}
         return board;
