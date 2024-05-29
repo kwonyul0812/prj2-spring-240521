@@ -104,7 +104,8 @@ public class BoardService {
                 "boardList", mapper.selectAllPaging(offset, searchType, keyword));
     }
 
-    public Board get(Integer id) {
+    public Map<String, Object> get(Integer id, Authentication authentication) {
+        Map<String, Object> map = new HashMap<>();
         Board board = mapper.selectById(id);
         List<String> fileNames = mapper.selectFileNameByBoardId(id);
         // 버킷객체URL/{id}/{name}
@@ -113,6 +114,12 @@ public class BoardService {
                 .toList();
 
         board.setFileList(files);
+
+        map.put("board", board);
+
+        Map<String, Object> like = new HashMap<>();
+        int count = mapper.selectCountLikeByBoardIdAndMemberId(id, Integer.valueOf(authentication.getName()));
+
 
         // http://172.30.1.61:8888/\{id}/\{name}
         return board;
