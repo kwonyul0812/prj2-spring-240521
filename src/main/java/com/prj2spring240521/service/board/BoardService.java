@@ -190,16 +190,21 @@ public class BoardService {
         return board.getMemberId().equals(Integer.valueOf(authentication.getName()));
     }
 
-    public void like(Map<String, Object> req, Authentication authentication) {
+    public Map<String, Object> like(Map<String, Object> req, Authentication authentication) {
         Integer boardId = (Integer) req.get("boardId");
         Integer memberId = Integer.valueOf(authentication.getName());
 
         // 이미 했으면
         int count = mapper.deleteLikeByBoardIdAndMemberId(boardId, memberId);
-
-        // 안했으면
         if (count == 1) {
+            return Map.of("like", false,
+                    "count", mapper.countLike(boardId));
+        } else {
+
+            // 안했으면
             mapper.insertLikeByBoardIdAndMemberId(boardId, memberId);
+            return Map.of("like", true,
+                    "count", mapper.countLike(boardId));
         }
     }
 }
