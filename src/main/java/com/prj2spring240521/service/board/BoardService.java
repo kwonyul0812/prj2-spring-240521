@@ -143,6 +143,7 @@ public class BoardService {
     public void edit(Board board, List<String> removeFileList, MultipartFile[] addFileList) throws IOException {
         if (removeFileList != null && removeFileList.size() > 0) {
             for (String fileName : removeFileList) {
+                // s3의 파일 삭제
                 String key = STR."prj2/\{board.getId()}/\{fileName}";
                 DeleteObjectRequest objectRequest = DeleteObjectRequest.builder()
                         .bucket(bucketName)
@@ -165,7 +166,7 @@ public class BoardService {
                     mapper.insertFileName(board.getId(), fileName);
                 }
 
-                // s3에 파일 저장
+                // s3에 파일 쓰기
                 String key = STR."prj2/\{board.getId()}/\{fileName}";
                 PutObjectRequest objectRequest = PutObjectRequest.builder()
                         .bucket(bucketName)
