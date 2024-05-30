@@ -9,6 +9,6 @@ public class Commnet {
     private Integer id;
     private Integer boardId;
     private Integer memberId;
-    private String commnet;
+    private String comment;
     private LocalDateTime inserted;
 }
