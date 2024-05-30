@@ -33,4 +33,10 @@ public class CommentController {
 
         return service.list(boardId);
     }
+
+    @DeleteMapping("remove")
+    public void remove(Comment comment) {
+        service.remove(comment);
+
+    }
 }
