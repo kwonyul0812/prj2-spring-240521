@@ -149,6 +149,9 @@ public class BoardService {
         // board_file
         mapper.deleteFileByBoardId(id);
 
+        // board_like
+        mapper.deleteLikeByBoardId(id);
+
         // board
         mapper.deleteById(id);
     }
