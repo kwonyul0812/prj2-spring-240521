@@ -5,7 +5,7 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 @Data
-public class Commnet {
+public class Comment {
     private Integer id;
     private Integer boardId;
     private Integer memberId;
