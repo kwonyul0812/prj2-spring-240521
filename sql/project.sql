@@ -143,4 +143,11 @@ CREATE TABLE comment
 );
 
 SELECT *
-FROM comment;
+FROM comment
+WHERE board_id = 3;
+
+DESC member;
+DESC comment;
+DESC board;
+
+
