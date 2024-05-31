@@ -45,4 +45,15 @@ public class CommentController {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
         }
     }
+
+    @PutMapping("edit")
+    public ResponseEntity modify(@RequestBody Comment comment, Authentication authentication) {
+        if (service.hasAccess(comment, authentication)) {
+            service.modify(comment);
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+        }
+    }
+
 }
