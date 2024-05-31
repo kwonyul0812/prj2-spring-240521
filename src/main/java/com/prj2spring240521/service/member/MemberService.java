@@ -88,7 +88,7 @@ public class MemberService {
         boardList.forEach(board -> boardService.remove(board.getId()));
 
         // 댓글 지우기
-        commentMapper.deleteCommentByMemberId(id);
+        commentMapper.deleteByMemberId(id);
 
         // 좋아요 지우기
         boardMapper.deleteLikeByMemberId(id);
