@@ -152,3 +152,8 @@ INSERT INTO board
     (title, content, member_id)
 SELECT title, content, member_id
 FROM board;
+
+INSERT INTO authority (member_id, name)
+values (7, 'admin');
+SELECT *
+FROM authority;
